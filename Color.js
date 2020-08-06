@@ -20,6 +20,11 @@ class Color{
     const newLightness = (this.lightness-this.step >= 1) ? this.lightness-this.step : 1
     return new Color(this.hue, this.saturation, newLightness)
   }
+
+  getNewHue(step){
+    const newHue = this.hue+step % 360
+    return new Color(newHue, this.saturation, this.lightness)
+  }
 }
 
 export { Color };

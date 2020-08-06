@@ -39,9 +39,16 @@ const monochromatic = [origColor.getDarkerColor().getDarkerColor(),
   origColor.getLighterColor(),
   origColor.getLighterColor().getLighterColor()]
 
+const analogous = [origColor.getNewHue(-60).getLighterColor(),
+  origColor.getNewHue(-60),
+  origColor,
+  origColor.getNewHue(60),
+  origColor.getNewHue(60).getDarkerColor()]
+
 // update DOM
 const displaySpace = document.getElementById('colors')
 const monoSpace = document.getElementById('mono')
+const analogousSpace = document.getElementById('analogous')
 
 // show original color
 let origColorSpace = document.createElement('div')
@@ -57,3 +64,14 @@ monochromatic.forEach((color, i) => {
 })
 
 monoSpace.appendChild(monoColorSpace)
+
+// show analogous palette
+let analogousColorSpace = document.createElement('div')
+analogousColorSpace.setAttribute('id', 'ana-palette')
+analogousColorSpace.setAttribute('class', 'palette')
+
+analogous.forEach((color, i) => {
+  analogousColorSpace.appendChild(addColorSquare(`mono${i}`, color))
+})
+
+analogousSpace.appendChild(analogousColorSpace)
