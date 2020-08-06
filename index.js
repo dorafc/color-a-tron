@@ -45,10 +45,17 @@ const analogous = [origColor.getNewHue(-60).getLighterColor(),
   origColor.getNewHue(60),
   origColor.getNewHue(60).getDarkerColor()]
 
+const comp = [origColor.getNewHue(180).getLighterColor(),
+  origColor.getNewHue(180),
+  origColor,
+  origColor.getDarkerColor(),
+  origColor.getDarkerColor().getDarkerColor()]
+
 // update DOM
 const displaySpace = document.getElementById('colors')
 const monoSpace = document.getElementById('mono')
 const analogousSpace = document.getElementById('analogous')
+const compSpace = document.getElementById('comp')
 
 // show original color
 let origColorSpace = document.createElement('div')
@@ -71,7 +78,18 @@ analogousColorSpace.setAttribute('id', 'ana-palette')
 analogousColorSpace.setAttribute('class', 'palette')
 
 analogous.forEach((color, i) => {
-  analogousColorSpace.appendChild(addColorSquare(`mono${i}`, color))
+  analogousColorSpace.appendChild(addColorSquare(`analogous${i}`, color))
 })
 
 analogousSpace.appendChild(analogousColorSpace)
+
+// show complementary palette
+let compColorSpace = document.createElement('div')
+compColorSpace.setAttribute('id', 'comp-palette')
+compColorSpace.setAttribute('class', 'palette')
+
+comp.forEach((color, i) => {
+  compColorSpace.appendChild(addColorSquare(`comp${i}`, color))
+})
+
+compSpace.appendChild(compColorSpace)
