@@ -3,10 +3,6 @@
   width: 150px;
 }
 
-li.col-square{
-  display: block;
-}
-
 .palette{
   display: flex;
 }

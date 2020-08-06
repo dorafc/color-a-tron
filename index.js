@@ -1,27 +1,8 @@
-class Color{
-  constructor(hue, saturation, lightness){
-    this.hue = hue;
-    this.saturation = saturation;
-    this.lightness = lightness
+import { Color } from '../Color.js'
 
-    this.step = 15;
-  }
-
-  getColorString(){
-    return `hsl(${this.hue}, ${this.saturation}%, ${this.lightness}%)`
-  } 
-
-  getLighterColor(){
-    const newLightness = (this.lightness+this.step <= 99) ? this.lightness+this.step : 99
-    return new Color(this.hue, this.saturation, newLightness)
-  }
-
-  getDarkerColor(){
-    const newLightness = (this.lightness-this.step >= 1) ? this.lightness-this.step : 1
-    return new Color(this.hue, this.saturation, newLightness)
-  }
-}
-
+/* ---
+ * pick a color
+ * --- */
 const pickOrigColor = () => {
   let color
 
@@ -34,6 +15,22 @@ const pickOrigColor = () => {
   return color
 }
 
+/* ---
+ * Add a color square
+ * --- */
+const addColorSquare = (id, color) => {
+  let colSpace = document.createElement('div')
+  colSpace.setAttribute('id', id)
+  colSpace.setAttribute('class', 'col-square')
+  colSpace.style.backgroundColor = color.getColorString()
+  return colSpace
+}
+
+
+/* ---
+ * Display time!
+ * --- */
+
 // set original color
 const origColor = pickOrigColor()
 const monochromatic = [origColor.getDarkerColor().getDarkerColor(), 
@@ -42,29 +39,21 @@ const monochromatic = [origColor.getDarkerColor().getDarkerColor(),
   origColor.getLighterColor(),
   origColor.getLighterColor().getLighterColor()]
 
-console.log(monochromatic)
-
 // update DOM
 const displaySpace = document.getElementById('colors')
 const monoSpace = document.getElementById('mono')
 
 // show original color
 let origColorSpace = document.createElement('div')
-origColorSpace.setAttribute('id', 'orig-color')
-origColorSpace.setAttribute('class', 'col-square')
-origColorSpace.style.backgroundColor = origColor.getColorString()
-displaySpace.appendChild(origColorSpace)
+displaySpace.appendChild(addColorSquare(`orig-color`, origColor))
 
 // show monochromatic palette
-let monoColorSpace = document.createElement('ul')
+let monoColorSpace = document.createElement('div')
 monoColorSpace.setAttribute('id', 'mono-palette')
 monoColorSpace.setAttribute('class', 'palette')
 
 monochromatic.forEach((color, i) => {
-  let colSpace = document.createElement('li')
-  colSpace.setAttribute('class', 'col-square')
-  colSpace.style.backgroundColor = color.getColorString()
-  monoColorSpace.appendChild(colSpace)
+  monoColorSpace.appendChild(addColorSquare(`mono${i}`, color))
 })
 
 monoSpace.appendChild(monoColorSpace)
