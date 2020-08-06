@@ -51,11 +51,18 @@ const comp = [origColor.getNewHue(180).getLighterColor(),
   origColor.getDarkerColor(),
   origColor.getDarkerColor().getDarkerColor()]
 
+const tri = [origColor.getNewHue(-120).getLighterColor(),
+  origColor.getNewHue(-120),
+  origColor,
+  origColor.getNewHue(120),
+  origColor.getNewHue(120).getDarkerColor()]
+
 // update DOM
 const displaySpace = document.getElementById('colors')
 const monoSpace = document.getElementById('mono')
 const analogousSpace = document.getElementById('analogous')
 const compSpace = document.getElementById('comp')
+const triSpace = document.getElementById('tri')
 
 // show original color
 let origColorSpace = document.createElement('div')
@@ -93,3 +100,14 @@ comp.forEach((color, i) => {
 })
 
 compSpace.appendChild(compColorSpace)
+
+// show triadic palette
+let triColorSpace = document.createElement('div')
+triColorSpace.setAttribute('id', 'tri-palette')
+triColorSpace.setAttribute('class', 'palette')
+
+tri.forEach((color, i) => {
+  triColorSpace.appendChild(addColorSquare(`tri${i}`, color))
+})
+
+triSpace.appendChild(triColorSpace)
