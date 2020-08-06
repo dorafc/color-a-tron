@@ -1,5 +1,25 @@
+class Color{
+  constructor(hue, saturation, lightness){
+    this.hue = hue;
+    this.saturation = saturation;
+    this.lightness = lightness
+  }
+
+  getColorString(){
+    return `hsl(${this.hue}, ${this.saturation}%, ${this.lightness}%)`
+  } 
+}
+
 const pickOrigColor = () => {
-  return "hsl(0, 0%, 95%)"
+  let color
+
+  // pick hue (between 0 and 360), saturation and lightness (between 0 and 100)
+  const hue = Math.floor(Math.random() * 360)
+  const saturation = Math.floor(Math.random() * 100)
+  const lightness = Math.floor(Math.random() * 100)
+
+  color = new Color(hue, saturation, lightness)
+  return color
 }
 
 // set original color
@@ -11,5 +31,5 @@ const displaySpace = document.getElementById('colors')
 let origColorSpace = document.createElement('div')
 origColorSpace.setAttribute('id', 'orig-color')
 origColorSpace.setAttribute('class', 'col-square')
-origColorSpace.style.backgroundColor = origColor
+origColorSpace.style.backgroundColor = origColor.getColorString()
 displaySpace.appendChild(origColorSpace)
