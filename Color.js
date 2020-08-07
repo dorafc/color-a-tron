@@ -3,21 +3,19 @@ class Color{
     this.hue = hue;
     this.saturation = saturation;
     this.lightness = lightness
-
-    this.step = 15;
   }
 
   getColorString(){
     return `hsl(${this.hue}, ${this.saturation}%, ${this.lightness}%)`
   } 
 
-  getLighterColor(){
-    const newLightness = (this.lightness+this.step <= 99) ? this.lightness+this.step : 99
+  getLighterColor(step){
+    const newLightness = (this.lightness+step <= 90) ? this.lightness+step : 90
     return new Color(this.hue, this.saturation, newLightness)
   }
 
-  getDarkerColor(){
-    const newLightness = (this.lightness-this.step >= 1) ? this.lightness-this.step : 1
+  getDarkerColor(step){
+    const newLightness = (this.lightness-step >= 10) ? this.lightness-step : 10
     return new Color(this.hue, this.saturation, newLightness)
   }
 
