@@ -1,4 +1,5 @@
 import { Color } from '../Color.js'
+import { generateMonochrome, generateAnalogous, generateComplementary, generateTriadic, generateCompound } from '../Palette.js'
 
 /* ---
  * pick a color
@@ -33,35 +34,11 @@ const addColorSquare = (id, color) => {
 
 // set original color
 const origColor = pickOrigColor()
-const monochromatic = [origColor.getDarkerColor(30), 
-  origColor.getDarkerColor(15), 
-  origColor, 
-  origColor.getLighterColor(15),
-  origColor.getLighterColor(30)]
-
-const analogous = [origColor.getNewHue(-60).getLighterColor(20),
-  origColor.getNewHue(-60),
-  origColor,
-  origColor.getNewHue(60),
-  origColor.getNewHue(60).getDarkerColor(20)]
-
-const comp = [origColor.getNewHue(180).getLighterColor(15),
-  origColor.getNewHue(180),
-  origColor,
-  origColor.getDarkerColor(15),
-  origColor.getDarkerColor(30)]
-
-const tri = [origColor.getNewHue(-120).getLighterColor(15),
-  origColor.getNewHue(-120),
-  origColor,
-  origColor.getNewHue(120),
-  origColor.getNewHue(120).getDarkerColor(30)]
-
-const compound = [origColor.getNewHue(-160).getLighterColor(15),
-  origColor.getNewHue(-160),
-  origColor,
-  origColor.getNewHue(160),
-  origColor.getNewHue(160).getDarkerColor(30)]
+const monochromatic = generateMonochrome(origColor)
+const analogous = generateAnalogous(origColor)
+const comp = generateComplementary(origColor)
+const tri = generateTriadic(origColor)
+const compound = generateCompound(origColor)
 
 // update DOM
 const displaySpace = document.getElementById('colors')
