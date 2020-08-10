@@ -9,35 +9,50 @@ const generateMonochrome = (color) => {
 }
 
 const generateAnalogous = (color) => {
-  return [color.getNewHue(-60).getLighterColor(20),
-    color.getNewHue(-60),
+  const negColor = color.getNewHue(-60)
+  const posColor = color.getNewHue(60)
+
+  return [negColor.shiftColor(0, randomNum(-20, 20), randomNum(10, 15)),
+    negColor,
     color,
-    color.getNewHue(60),
-    color.getNewHue(60).getDarkerColor(20)]
+    posColor,
+    posColor.shiftColor(0, randomNum(-20, 20), randomNum(-20, -10))]
 }
 
 const generateComplementary = (color) => {
-  return [color.getNewHue(180).getLighterColor(15),
-    color.getNewHue(180),
+  const compColor = color.getNewHue(180)
+
+  return [compColor.shiftColor(0, randomNum(-20, 20), randomNum(10, 15)),
+    compColor,
     color,
-    color.getDarkerColor(15),
-    color.getDarkerColor(30)]
+    color.shiftColor(0, randomNum(-15, 15), randomNum(-20, -10)),
+    color.shiftColor(0, randomNum(-15, 15), randomNum(-35, -25))]
 }
 
 const generateTriadic = (color) => {
-  return [color.getNewHue(-120).getLighterColor(15),
-    color.getNewHue(-120),
+  const negColor = color.getNewHue(-120)
+  const posColor = color.getNewHue(120)
+
+  return [negColor.shiftColor(0, randomNum(-20, 20), randomNum(10, 15)),
+    negColor,
     color,
-    color.getNewHue(120),
-    color.getNewHue(120).getDarkerColor(30)]
+    posColor,
+    posColor.shiftColor(0, randomNum(-20, 20), randomNum(-20, -10))]
 }
 
 const generateCompound = (color) => {
-  return [color.getNewHue(-160).getLighterColor(15),
-    color.getNewHue(-160),
+  const negColor = color.getNewHue(-160)
+  const posColor = color.getNewHue(160)
+
+  return [negColor.shiftColor(0, randomNum(-20, 20), randomNum(10, 15)),
+    negColor,
     color,
-    color.getNewHue(160),
-    color.getNewHue(160).getDarkerColor(30)]
+    posColor,
+    posColor.shiftColor(0, randomNum(-20, 20), randomNum(-20, -10))]
+}
+
+const randomNum = (min, max) => {
+  return Math.floor(Math.random() * (max - min)) + min
 }
 
 export { generateMonochrome, generateAnalogous, generateComplementary, generateTriadic, generateCompound }
