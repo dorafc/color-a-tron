@@ -26,7 +26,7 @@ const addColorSquare = (id, color) => {
   colSpace.style.backgroundColor = color.getColorString()
 
   let colHexPara = document.createElement('p')
-  let colHex = document.createTextNode(color.toRGB())
+  let colHex = document.createTextNode(color.toHex())
   colHexPara.appendChild(colHex)
   colSpace.appendChild(colHexPara)
   return colSpace
