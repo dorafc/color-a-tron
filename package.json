@@ -1,0 +1,26 @@
+{
+  "name": "color-a-tron",
+  "version": "1.0.0",
+  "description": "generate HSL and hex string color palettes",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dorafc/color-a-tron.git"
+  },
+  "keywords": [
+    "color",
+    "palette",
+    "hsl",
+    "hex"
+  ],
+  "author": "Dora F. Caswell <dorafraeman@gmail.com> (https://dorafc.github.io/)",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/dorafc/color-a-tron/issues"
+  },
+  "homepage": "https://github.com/dorafc/color-a-tron#readme",
+  "type": "module"
+}

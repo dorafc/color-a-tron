@@ -1,5 +1,5 @@
-import { Color } from '../Color.js'
-import { generateMonochrome, generateAnalogous, generateComplementary, generateTriadic, generateCompound } from '../Palette.js'
+import { Color } from '../src/Color.js'
+import { generateMonochrome, generateAnalogous, generateComplementary, generateTriadic, generateCompound } from '../src/Palette.js'
 
 /* ---
  * pick a color

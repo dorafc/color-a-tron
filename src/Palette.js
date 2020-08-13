@@ -1,4 +1,4 @@
-import { Color } from '../Color.js'
+import { Color } from '../src/Color.js'
 
 const generateMonochrome = (color) => {
   return [color.getLighterColor(30), 
