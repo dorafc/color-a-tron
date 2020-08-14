@@ -1,5 +1,6 @@
 import { Color } from '../src/Color.js'
 
+// 5 colors representing a monochromo palette
 const generateMonochrome = (color) => {
   return [color.getLighterColor(30), 
     color.getLighterColor(15), 
@@ -8,6 +9,7 @@ const generateMonochrome = (color) => {
     color.getDarkerColor(30)]
 }
 
+// 5 colors representing a analogous palette
 const generateAnalogous = (color) => {
   const negColor = color.getNewHue(-60)
   const posColor = color.getNewHue(60)
@@ -19,6 +21,7 @@ const generateAnalogous = (color) => {
     posColor.shiftColor(0, randomNum(-20, 20), randomNum(-20, -10))]
 }
 
+// 5 colors representing a complementary palette
 const generateComplementary = (color) => {
   const compColor = color.getNewHue(180)
 
@@ -29,6 +32,7 @@ const generateComplementary = (color) => {
     color.shiftColor(0, randomNum(-15, 15), randomNum(-35, -25))]
 }
 
+// 5 colors representing a triadic palette
 const generateTriadic = (color) => {
   const negColor = color.getNewHue(-120)
   const posColor = color.getNewHue(120)
@@ -40,6 +44,7 @@ const generateTriadic = (color) => {
     posColor.shiftColor(0, randomNum(-20, 20), randomNum(-20, -10))]
 }
 
+// 5 colors representing a compound palette
 const generateCompound = (color) => {
   const negColor = color.getNewHue(-160)
   const posColor = color.getNewHue(160)
@@ -67,6 +72,7 @@ const generateHexPalette = () => {
   return(type(color).map(col => col.toHex()))
 }
 
+// helper function to generate a random number
 const randomNum = (min, max) => {
   return Math.floor(Math.random() * (max - min)) + min
 }

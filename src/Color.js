@@ -1,24 +1,29 @@
 class Color{
+  // create an HSL color
   constructor(hue, saturation, lightness){
     this.hue = hue;
     this.saturation = saturation;
     this.lightness = lightness
   }
 
+  // return the HSL color as a string
   getColorString(){
     return `hsl(${this.hue}, ${this.saturation}%, ${this.lightness}%)`
   } 
 
+  // return a new version of the color
   getLighterColor(step){
     const newLightness = (this.lightness+step <= 90) ? this.lightness+step : 90
     return new Color(this.hue, this.saturation, newLightness)
   }
 
+  // return a new darker version of the color
   getDarkerColor(step){
     const newLightness = (this.lightness-step >= 10) ? this.lightness-step : 10
     return new Color(this.hue, this.saturation, newLightness)
   }
 
+  // return a new color with a shifted hue value
   getNewHue(step){
     let newHue = (this.hue+step) % 360
     if (newHue < 0){
@@ -27,10 +32,13 @@ class Color{
     return new Color(newHue, this.saturation, this.lightness)
   }
 
+  // return a new color with shifted hue, saturation, and lightness values
+  // TO DO add checks for modified colors
   shiftColor(h,s,l){
     return new Color(this.hue + h, this.saturation + s, this.lightness + l)
   }
 
+  // return a string of the colors hex value
   toHex(){
     // from https://css-tricks.com/converting-color-spaces-in-javascript/ and https://en.wikipedia.org/wiki/HSL_and_HSV#HSL_to_RGB
     let color = ""
