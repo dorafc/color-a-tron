@@ -86,39 +86,45 @@ describe('return a darker version of color', () => {
 
 // test get new hue
 describe('return a new color with a new shifted hue from the current hue', () => {
-  const h = 0
-  const s = 100
-  const l = 50
-  let steps = [15, 375]
+  it('should return a new color object with a higher lightness value', () => {
+    const h = 0
+    const s = 100
+    const l = 50
+    let steps = [15, 375]
 
-  let col = new Color(h,s,l)
+    let col = new Color(h,s,l)
 
-  let newCols = steps.map(s => col.getNewHue(s))
+    let newCols = steps.map(s => col.getNewHue(s))
 
-  expect(newCols[0].hue).to.equal(15)
-  expect(newCols[1].hue).to.equal(15)
+    expect(newCols[0].hue).to.equal(15)
+    expect(newCols[1].hue).to.equal(15)
+  })
 })
 
 // shift color
 describe('create a new color related to the current color', () => {
-  const h = 0
-  const s = 100
-  const l = 50
-  let col = new Color(h,s,l)
-  let newCol = col.shiftColor(1,-1,1)
+  it('should return a new color object with adjusted values for hue, saturation, and lightness', () => {
+    const h = 0
+    const s = 100
+    const l = 50
+    let col = new Color(h,s,l)
+    let newCol = col.shiftColor(1,-1,1)
 
-  expect(newCol.hue).to.equal(1)
-  expect(newCol.saturation).to.equal(99)
-  expect(newCol.lightness).to.equal(51)
+    expect(newCol.hue).to.equal(1)
+    expect(newCol.saturation).to.equal(99)
+    expect(newCol.lightness).to.equal(51)
+  })
 })
 
 // to hex string
 describe('convert the HSL value to a hex string', () => {
-  const h = 0
-  const s = 100
-  const l = 50
+  it('should return a string showing the correct hex value of the HSL color', () => {
+    const h = 0
+    const s = 100
+    const l = 50
 
-  let col = new Color(h,s,l)
+    let col = new Color(h,s,l)
 
-  expect(col.toHex()).to.equal("#ff0000")
+    expect(col.toHex()).to.equal("#ff0000")
+  })
 })
