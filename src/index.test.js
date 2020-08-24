@@ -128,3 +128,18 @@ describe('convert the HSL value to a hex string', () => {
     expect(col.toHex()).to.equal("#ff0000")
   })
 })
+
+// test palette generation
+describe('create a hex palette', () => {
+  it('should return an array with 5 hex value strings', () => {
+
+    let pal = generateHexPalette()
+    expect(pal.length).to.equal(5)
+
+    pal.forEach(col => {
+      expect(col).to.have.lengthOf(7)
+      expect(col.slice(0,1)).to.equal('#')
+      expect(col).to.be.a('string');
+    })
+  })
+})
