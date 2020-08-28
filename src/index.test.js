@@ -1,7 +1,7 @@
 import pkg from 'chai';
 const { expect } = pkg;
 
-import { Color, generateMonochrome, generateAnalogous, generateComplementary, generateTriadic, generateCompound, generateHexPalette } from './index.js'
+import { Color, normalizeHue, generateMonochrome, generateAnalogous, generateComplementary, generateTriadic, generateCompound, generateHexPalette } from './index.js'
 
 /* TEST COLOR OBJECT */
 
@@ -23,6 +23,25 @@ describe('create a Color object', () => {
     expect(col.hue).to.equal(h)
     expect(col.saturation).to.equal(s)
     expect(col.lightness).to.equal(l)
+  })
+})
+
+// test hue normalization
+describe('hue should be between 0 and 360', () => {
+  it('should be between 0 and 360', () => {
+    const h = [0, 361, 700000, -20, -2398]
+    const s = 100
+    const l = 50
+
+    let cols = []
+    h.forEach(hue =>{
+      cols.push(new Color(hue, s, l))
+    })
+
+    cols.forEach(col => {
+      expect(col.hue).to.be.above(-1)
+      expect(col.hue).to.be.below(360)
+    })
   })
 })
 

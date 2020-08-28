@@ -1,7 +1,7 @@
 class Color{
   // create an HSL color
   constructor(hue, saturation, lightness){
-    this.hue = hue;
+    this.hue =  normalizeHue(hue);
     this.saturation = saturation;
     this.lightness = lightness
   }
@@ -25,10 +25,8 @@ class Color{
 
   // return a new color with a shifted hue value
   getNewHue(step){
-    let newHue = (this.hue+step) % 360
-    if (newHue < 0){
-      newHue += 360
-    }
+    let newHue = normalizeHue(this.hue+step)
+    
     return new Color(newHue, this.saturation, this.lightness)
   }
 
@@ -97,4 +95,15 @@ class Color{
   }
 }
 
-export { Color };
+// hue is between 0 and 359
+function normalizeHue(hue){
+  let newHue = hue
+
+  while (newHue < 0){
+    newHue += 360
+  }
+
+  return newHue % 360
+}
+
+export { Color, normalizeHue };
