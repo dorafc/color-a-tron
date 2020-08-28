@@ -2,8 +2,8 @@ class Color{
   // create an HSL color
   constructor(hue, saturation, lightness){
     this.hue =  normalizeHue(hue);
-    this.saturation = saturation;
-    this.lightness = lightness
+    this.saturation = normalizeSaturation(saturation);
+    this.lightness = normalizeLightness(lightness)
   }
 
   // return the HSL color as a string
@@ -104,6 +104,26 @@ function normalizeHue(hue){
   }
 
   return newHue % 360
+}
+
+function normalizeSaturation(sat){
+  let newSat = sat
+
+  while (newSat < 0){
+    newSat += 100
+  }
+
+  return newSat % 101
+}
+
+function normalizeLightness(light){
+  let newLight = light
+
+  while (newLight < 0){
+    newLight += 100
+  }
+
+  return newLight % 101
 }
 
 export { Color, normalizeHue };
