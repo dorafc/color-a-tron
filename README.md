@@ -1,7 +1,7 @@
 # color-a-tron
 > A small library for generating random color palettes
 
-! [Gif of randomly generated color palettes as page reloads]
+![Gif of randomly generated color palettes as page reloads]
 (https://github.com/dorafc/color-a-tron/blob/main/imgs/coloratron.gif?raw=true)
 
 ## Set up
