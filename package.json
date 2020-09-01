@@ -1,6 +1,6 @@
 {
   "name": "color-a-tron",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "generate HSL and hex string color palettes",
   "main": "src/index.js",
   "scripts": {
