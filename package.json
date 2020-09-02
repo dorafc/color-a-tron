@@ -1,6 +1,6 @@
 {
   "name": "color-a-tron",
-  "version": "0.0.0-development",
+  "version": "0.0.0-semantically-released",
   "description": "generate HSL and hex string color palettes",
   "main": "src/index.js",
   "scripts": {
@@ -30,6 +30,7 @@
     "semantic-release": "^17.1.1"
   },
   "release": {
-    "branches": ["main"]
+    "branches": ["main"],
+    "tagFormat": "${version}"
   }
 }
