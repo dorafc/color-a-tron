@@ -10,7 +10,8 @@ jobs:
           node-version: '14'
       - run: npm ci
       - run: npm test
-      - uses: codfish/semantic-release-action@master
+      - name: Release
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: npx semantic-release
