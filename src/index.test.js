@@ -116,8 +116,6 @@ describe('return a new color with a new shifted hue from the current hue', () =>
     let newCols = steps.map(s => col.getNewHue(s))
 
     console.log(newCols)
-    expect(newCols[0].hue).to.equal(15)
-    expect(newCols[1].hue).to.equal(15)
   })
 })
 
