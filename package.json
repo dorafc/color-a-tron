@@ -29,6 +29,7 @@
     "chai": "4.2.0",
     "commitizen": "4.2.1",
     "cz-conventional-changelog": "3.3.0",
+    "husky": "4.2.5",
     "mocha": "8.1.1",
     "semantic-release": "^17.1.1"
   },
@@ -39,8 +40,11 @@
     "tagFormat": "${version}"
   },
   "config": {
-    "commitizen":{
-      "path": "./node_module/cz-conventional-changelog"
+    "commitizen": {
+      "path": "cz-conventional-changelog"
     }
+  },
+  "husky": {
+    "pre-commit": "npm test"
   }
 }
