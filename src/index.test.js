@@ -113,9 +113,7 @@ describe('return a new color with a new shifted hue from the current hue', () =>
 
     let col = new Color(h,s,l)
 
-    let newCols = steps.map(s => col.getNewHue(s))
-
-    console.log(newCols)
+    let newCols = steps.map(s => col.getNewHue(s))  
   })
 })
 
