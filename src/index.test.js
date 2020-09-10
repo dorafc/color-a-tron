@@ -16,12 +16,12 @@ describe('test fun happy times', () => {
 describe('create a Color object', () => {
   it('should create an object with HSL values', () => {
     const h = 0
-    const s = 100
+    const s = [100, -10]
     const l = 50
 
-    let col = new Color(h,s,l)
+    let col = new Color(h,s[0],l)
     expect(col.hue).to.equal(h)
-    expect(col.saturation).to.equal(s)
+    expect(col.saturation).to.equal(s[0])
     expect(col.lightness).to.equal(l)
   })
 })
@@ -135,13 +135,23 @@ describe('create a new color related to the current color', () => {
 // to hex string
 describe('convert the HSL value to a hex string', () => {
   it('should return a string showing the correct hex value of the HSL color', () => {
-    const h = 0
+    const h = [0, 70, 140, 190, 280, 310]
     const s = 100
     const l = 50
 
-    let col = new Color(h,s,l)
+    let col = new Color(h[0],s,l)
+    let col2 = new Color(h[1],s,l)
+    let col3 = new Color(h[2],s,l)
+    let col4 = new Color(h[3],s,l)
+    let col5 = new Color(h[4],s,l)
+    let col6 = new Color(h[5],s,l)
 
     expect(col.toHex()).to.equal("#ff0000")
+    expect(col2.toHex()).to.equal("#d4ff00")
+    expect(col3.toHex()).to.equal("#00ff55")
+    expect(col4.toHex()).to.equal("#00d5ff")
+    expect(col5.toHex()).to.equal("#aa00ff")
+    expect(col6.toHex()).to.equal("#ff00d4")
   })
 })
 

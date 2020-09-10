@@ -56,9 +56,9 @@ class Color{
       blue = 0
     } else
     if (60 <= this.hue && this.hue < 120){
-      red = 0
+      red = x
       green = chroma
-      blue = x
+      blue = 0
     } else
     if (120 <= this.hue && this.hue < 180){
       red = 0
