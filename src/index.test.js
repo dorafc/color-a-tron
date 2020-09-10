@@ -17,12 +17,17 @@ describe('create a Color object', () => {
   it('should create an object with HSL values', () => {
     const h = 0
     const s = [100, -10]
-    const l = 50
+    const l = [50, -120]
 
-    let col = new Color(h,s[0],l)
+    let col = new Color(h,s[0],l[0])
+    let col2 = new Color(h,s[1],l[1])
     expect(col.hue).to.equal(h)
     expect(col.saturation).to.equal(s[0])
-    expect(col.lightness).to.equal(l)
+    expect(col.lightness).to.equal(l[0])
+
+    expect(col2.hue).to.equal(h)
+    expect(col2.saturation).to.equal(s[1] + 100)
+    expect(col2.lightness).to.equal(l[1] + 200)
   })
 })
 
