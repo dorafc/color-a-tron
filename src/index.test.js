@@ -1,16 +1,9 @@
 import pkg from 'chai';
 const { expect } = pkg;
 
-import { Color, normalizeHue, generateMonochrome, generateAnalogous, generateComplementary, generateTriadic, generateCompound, generateHexPalette } from './index.js'
+import { Color, normalizeHue, normalizeSaturation, generateMonochrome, generateAnalogous, generateComplementary, generateTriadic, generateCompound, generateHexPalette } from './index.js'
 
 /* TEST COLOR OBJECT */
-
-// silly test to make sure that tests work 
-describe('test fun happy times', () => {
-  it ('should work!', () => {
-    expect(true).to.be.true;
-  })
-})
 
 // test constructor
 describe('create a Color object', () => {
@@ -160,6 +153,8 @@ describe('convert the HSL value to a hex string', () => {
   })
 })
 
+/* TEST PALETTE */
+
 // test palette generation
 describe('create a hex palette', () => {
   it('should return an array with 5 hex value strings', () => {
@@ -171,6 +166,82 @@ describe('create a hex palette', () => {
       expect(col).to.have.lengthOf(7)
       expect(col.slice(0,1)).to.equal('#')
       expect(col).to.be.a('string');
+    })
+  })
+})
+
+// test monochrome palette
+describe('create a monochrome palette', () => {
+  it ('should return an array with 5 colors with different lightness values', () => {
+    const hue = Math.floor(Math.random() * 360)
+    const sat = 100
+    const light = 50
+    const color = new Color(hue, sat, light)
+
+    const pal = generateMonochrome(color)
+    expect(pal.length).to.equal(5)
+    expect(pal[0].lightness).to.be.greaterThan(light)
+    expect(pal[1].lightness).to.be.greaterThan(light)
+    expect(pal[2].lightness).to.equal(light)
+    expect(pal[3].lightness).to.be.lessThan(light)
+    expect(pal[4].lightness).to.be.lessThan(light)
+
+    pal.forEach(col => {
+      expect(col.hue).to.equal(hue)
+      expect(col.saturation).to.equal(sat)
+    })
+  })
+})
+
+// test analogus palette
+describe('create an analogus palette', () => {
+  it ('should return an array with 5 colors with three different hue values', () => {
+    // const hue = Math.floor(Math.random() * 360)
+    const hue = 120
+    const sat = 100
+    const light = 50
+    const color = new Color(hue, sat, light)
+
+    const pal = generateAnalogous(color)
+
+    expect(pal.length).to.equal(5)
+
+    pal.forEach(col => {
+      expect(col.hue).to.satisfy(h => (normalizeHue(h + 60) || normalizeHue(h - 60) || h))
+    })
+  })
+})
+
+// test complementary palette
+describe('create a complementary palette', () => {
+  it ('should return an array with 5 colors with different hue values', () => {
+    const hue = Math.floor(Math.random() * 360)
+    const sat = 100
+    const light = 50
+    const color = new Color(hue, sat, light)
+
+    const pal = generateComplementary(color)
+
+    pal.forEach(col => {
+      expect(col.hue).to.satisfy(h => (normalizeHue(h + 180) || h))
+    })
+  })
+})
+
+// test complementary palette
+describe('create a triadic palette', () => {
+  it ('should return an array with 5 colors with different hue values', () => {
+    const hue = Math.floor(Math.random() * 360)
+    const sat = 100
+    const light = 50
+    const color = new Color(hue, sat, light)
+
+    const pal = generateTriadic(color)
+
+    expect(pal.length).to.equal(5)
+
+    pal.forEach(col => {
+      expect(col.hue).to.satisfy(h => (normalizeHue(h + 120) || normalizeHue(h - 120) || h))
     })
   })
 })
