@@ -245,3 +245,20 @@ describe('create a triadic palette', () => {
     })
   })
 })
+
+describe('create a compound palette', () => {
+  it ('should return an array with 5 colors with different hue values', () => {
+    const hue = Math.floor(Math.random() * 360)
+    const sat = 100
+    const light = 50
+    const color = new Color(hue, sat, light)
+
+    const pal = generateCompound(color)
+
+    expect(pal.length).to.equal(5)
+
+    pal.forEach(col => {
+      expect(col.hue).to.satisfy(h => (normalizeHue(h + 160) || normalizeHue(h - 160) || h))
+    })
+  })
+})
