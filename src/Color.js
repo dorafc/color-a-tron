@@ -126,4 +126,4 @@ function normalizeLightness(light){
   return newLight % 101
 }
 
-export { Color, normalizeHue };
+export { Color, normalizeHue, normalizeSaturation };
