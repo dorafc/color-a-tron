@@ -2,7 +2,7 @@
   "name": "color-a-tron",
   "version": "0.0.0-semantically-released",
   "description": "generate HSL and hex string color palettes",
-  "main": "src/index.js",
+  "main": "/src/index.js",
   "scripts": {
     "test": "jest",
     "semantic-release": "semantic-release",
