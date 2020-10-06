@@ -10,6 +10,9 @@ coming soon
 Color-a-tron is small library with a silly name that generates 5 colors palattes from a single HSL color. The library can also convert HSL colors to rgb hex values for use in front-end code.
 
 ## Usage
+### Install
+`npm i color-a-tron`
+
 ### Tests 
 Color-a-tron uses Jest (and currently Chai as an assertion library). Tests are in index.test.js
 
