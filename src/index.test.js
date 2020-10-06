@@ -1,5 +1,5 @@
 
-import { Color, normalizeHue, normalizeSaturation, generateMonochrome, generateAnalogous, generateComplementary, generateTriadic, generateCompound, generateHexPalette } from './index.js'
+import { Color, normalizeHue, normalizeSaturation, generateMonochrome, generateAnalogous, generateComplementary, generateTriadic, generateCompound, generateHexPalette } from '../index.js'
 // import { expect } from 'chai'
 
 /* TEST COLOR OBJECT */

@@ -1,4 +1,4 @@
-import { Color } from '../src/Color.js'
+import { Color } from './Color.js'
 
 // 5 colors representing a monochromo palette
 const generateMonochrome = (color) => {

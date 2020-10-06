@@ -2,7 +2,7 @@
   "name": "color-a-tron",
   "version": "0.0.0-semantically-released",
   "description": "generate HSL and hex string color palettes",
-  "main": "/src/index.js",
+  "main": "index.js",
   "scripts": {
     "test": "jest",
     "semantic-release": "semantic-release",
@@ -24,6 +24,9 @@
     "url": "https://github.com/dorafc/color-a-tron/issues"
   },
   "homepage": "https://github.com/dorafc/color-a-tron#readme",
+  "files": ["Color.js",
+    "Palette.js",
+    "/imgs"],
   "devDependencies": {
     "@babel/core": "7.11.6",
     "@babel/preset-env": "7.11.5",
